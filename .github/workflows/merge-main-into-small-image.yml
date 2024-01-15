@@ -30,3 +30,7 @@ jobs:
       - name: docker push image
         run: |
           docker push public.ecr.aws/e7y7s7r3/nextapp:latest
+
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service --cluster node-app --service node-service --force-new-deployment
